@@ -39,17 +39,9 @@ app.post('/songs', async (req, res) => {
     }
 
     try {
-        const exists = await Song.findOne({ 
-            $or: [{ id: id }, { name: new RegExp('^' + name + '$', 'i') }] 
-        });
-
-        if (exists) {
-            return res.status(400).json({ error: "Song already exists" });
-        }
-
         const newSong = new Song({
-            id: id,
-            name: name,
+            id: String(id),
+            name: String(name),
             addedBy: addedBy || "Unknown",
             userId: userId || "1"
         });
