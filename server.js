@@ -9,7 +9,6 @@ app.use(cors());
 
 const filePath = path.join(__dirname, 'songs.json');
 
-// Şarkıları dosyadan oku
 function getSongs() {
     try {
         if (!fs.existsSync(filePath)) {
@@ -22,7 +21,6 @@ function getSongs() {
     }
 }
 
-// Şarkıları dosyaya yaz
 function saveSongs(songs) {
     fs.writeFileSync(filePath, JSON.stringify(songs, null, 2));
 }
